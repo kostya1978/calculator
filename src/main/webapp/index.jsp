@@ -14,7 +14,7 @@
             width: 100px;
             height: 50px;
         }
-        .tablo {
+        .display {
             height: 60px;
             width: 266px;
             text-align: right;
@@ -23,70 +23,73 @@
     </style>
 </head>
 <body>
-<form method="post">
+<form method="post" action="CalculatorServlet">
     <table border="0">
         <tr>
             <td colspan="5">
-                <input type="text" class="tablo">
+                <jsp:useBean id="calculatorBean" class="ru.tesoft.calculator.CalculatorBean" scope="session" >
+                    <jsp:setProperty name="calculatorBean" property="displayValue" value="0" />
+                </jsp:useBean>
+                <input type="text" class="display" value="<jsp:getProperty name="calculatorBean" property="displayValue" />">
             </td>
         </tr>
         <tr>
             <td>
-                <input type="button" value="7" class="btn">
+                <input type="submit" name="btn" value="7" class="btn">
             </td>
             <td>
-                <input type="button" value="8" class="btn">
+                <input type="submit" name="btn" value="8" class="btn">
             </td>
             <td>
-                <input type="button" value="9" class="btn">
+                <input type="submit" name="btn" value="9" class="btn">
             </td>
             <td>
-                <input type="button" value="/" class="btn">
+                <input type="submit" name="btn" value="/" class="btn">
             </td>
             <td rowspan="2">
-                <input type="button" value="C" class="btn_tall">
+                <input type="submit" name="btn" value="C" class="btn_tall">
             </td>
         </tr>
         <tr>
             <td>
-                <input type="button" value="4" class="btn">
+                <input type="submit" name="btn" value="4" class="btn">
             </td>
             <td>
-                <input type="button" value="5" class="btn">
+                <input type="submit" name="btn" value="5" class="btn">
             </td>
             <td>
-                <input type="button" value="6" class="btn">
+                <input type="submit" name="btn" value="6" class="btn">
             </td>
             <td>
-                <input type="button" value="*" class="btn">
+                <input type="submit" name="btn" value="*" class="btn">
             </td>
         </tr>
         <tr>
             <td>
-                <input type="button" value="1" class="btn">
+                <input type="submit" name="btn" value="1" class="btn">
             </td>
             <td>
-                <input type="button" value="2" class="btn">
+                <input type="submit" name="btn" value="2" class="btn">
             </td>
             <td>
-                <input type="button" value="3" class="btn">
+                <input type="submit" name="btn" value="3" class="btn">
             </td>
             <td>
-                <input type="button" value="-" class="btn">
+                <input type="submit" name="btn" value="-" class="btn">
             </td>
             <td rowspan="2">
-                <input type="button" value="=" class="btn_tall">
+                <input type="submit" name="btn" value="=" class="btn_tall">
             </td>
         </tr>
         <tr>
             <td colspan="2">
-                <input type="button" value="0" class="btn_wide">
+                <input type="submit" name="btn" value="0" class="btn_wide">
             </td>
             <td>
-                <input type="button" value="," class="btn">
+                <input type="submit" name="btn" value="," class="btn">
             </td>
             <td>
-                <input type="button" value="+" class="btn">
+                <input type="submit" name="btn" value="+" class="btn">
             </td>
         </tr>
     </table>
