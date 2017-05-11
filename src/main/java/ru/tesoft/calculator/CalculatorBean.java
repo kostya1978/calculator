@@ -1,10 +1,12 @@
 package ru.tesoft.calculator;
 
+import org.apache.log4j.Logger;
+
 /**
  * Created by Konstantin on 08.02.2016.
  */
 public class CalculatorBean implements CalculatorInterface {
-
+    static Logger logger = Logger.getLogger(CalculatorBean.class);
     private String displayValue;
     private String firstOperand = "0";
     private String secondOperand = "";
@@ -12,6 +14,7 @@ public class CalculatorBean implements CalculatorInterface {
 
 
     public String add(String operand1, String operand2) {
+        logger.debug("Adding two numbers : " + operand1 + "+" + operand2);
         Double oper1 = Double.parseDouble(operand1.replaceAll(",", "."));
         Double oper2 = Double.parseDouble(operand2.replaceAll(",", "."));
         Double sum = oper1 + oper2;
