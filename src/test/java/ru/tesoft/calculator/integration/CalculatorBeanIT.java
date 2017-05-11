@@ -56,11 +56,11 @@ public class CalculatorBeanIT {
 
         // Find the Input Text element by it's id="display":
         WebElement display = driver.findElement(By.id("display"));
-        String text = display.getAttribute("value");
+        String displayText = display.getAttribute("value");
 
         try {
             // Compare expected and actual results:
-            assertEquals("5", text);
+            assertEquals("5", displayText);
 
             // Let the user actually see something:
             Thread.sleep(3500);
