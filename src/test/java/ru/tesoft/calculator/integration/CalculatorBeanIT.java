@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import ru.tesoft.util.Util;
 
 import static org.junit.Assert.assertEquals;
 
@@ -21,6 +22,7 @@ public class CalculatorBeanIT {
 
     @Before
     public void setUp() throws Exception {
+        System.setProperty("webdriver.chrome.driver", Util.getCurrentProjectPath() + "/distr/chromedriver.exe");
         driver = new ChromeDriver();
     }
 
