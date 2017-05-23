@@ -22,7 +22,7 @@ public class MailRuIT {
 
   @Before
   public void setUp() throws Exception {
-    System.setProperty("webdriver.chrome.driver", Util.getCurrentProjectPath() + "/distr/chromedriver.exe");
+    System.setProperty("webdriver.chrome.driver", Util.getCurrentProjectPath() + "/chromedriver.exe");
     driver = new ChromeDriver();
   }
 
