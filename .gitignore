@@ -1,0 +1,28 @@
+target/
+bin/
+
+# editors
+nbproject/
+.buildpath
+.classpath
+.project
+.tern-project
+.settings/
+*.scc
+
+# Windows thumbnail cache
+Thumbs.db
+
+# Apple OS X custom attributes of folder
+.DS_Store
+# Builds
+
+# IntelliJ IDEA Files
+/.idea/
+*.iml
+*.iws
+*.ipr
+
+*.exp
+*.vbw
+*.orig
