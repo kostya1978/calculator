@@ -1,11 +1,10 @@
 package ru.tesoft.mailru.integration;
 
 import org.apache.log4j.Logger;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import ru.tesoft.util.Util;
 
@@ -16,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 
 public class MailRu {
 
-  static Logger logger = Logger.getLogger(MailRu.class);
+  static Logger logger = Logger.getLogger(MailRuIT.class);
   private WebDriver driver;
 
   @Before
@@ -26,29 +25,44 @@ public class MailRu {
   }
 
   @Test
-  public void testLoginToMailRu() {
-    logger.debug("testLoginToMailRu");
+  public void testLogin() {
+    logger.debug("testLogin");
 
+    // Open mail.ru application in Chrome Browser:
+    driver.get("http://mail.ru");
 
+    // Find the "loginTextBox" element by it's id="mailbox__login":
+    WebElement loginTextBox = driver.findElement(By.id("mailbox__login"));
+    loginTextBox.sendKeys("selenium.webdriver");
 
+    // Find the "passwordTextBox" element by it's id="mailbox__password":
+    WebElement passwordTextBox = driver.findElement(By.id("mailbox__password"));
+    passwordTextBox.sendKeys("Gaspu3aQ");
 
+    // Find the "enterButton" element by it's id="mailbox__auth__button":
+    WebElement enterButton = driver.findElement(By.id("mailbox__auth__button"));
 
-    try {
-      // Compare expected and actual results:
-      assertEquals("selenium.webdriver@mail.ru", "");
+    // Click the "enterButton":
+    enterButton.click();
 
-      // Let the user actually see something:
-      Thread.sleep(3500);
-    } catch (Exception e) {
-      e.printStackTrace();
-    } finally {
-      //Close the browser
-      driver.quit();
-    }
+    // Find the "userEmail" element by it's id="PH_user-email":
+    // To avoid stale element reference error, we need to wait until element is loaded first:
+    Util.waitElementUntilPresent(By.id("PH_user-email"), driver);
+    WebElement userEmail = driver.findElement(By.id("PH_user-email"));
+    String displayText = userEmail.getText();
+
+    // Compare expected and actual results:
+    assertEquals("selenium.webdriver@mail.ru", displayText);
+
+    // Let the user actually see something:
+    Util.keepBrowserOpenFor3Seconds();
+
   }
 
-
-
+  @After
+  public void tearDown() throws Exception {
+    driver.quit();
+  }
 
 
 }
