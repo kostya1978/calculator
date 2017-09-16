@@ -44,8 +44,8 @@ public class Util {
       try {
         Thread.sleep(1000);
         logger.debug("Slept for 1 sec");
-        WebElement date = driver.findElement(by);
-        date.getText();
+        WebElement webElement = driver.findElement(by);
+        webElement.getText();
         flag = false;
       } catch (InterruptedException e) {
         logger.debug("InterruptedException");

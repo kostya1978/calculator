@@ -77,7 +77,7 @@ public class MailRu {
     // Click the "enterButton":
     enterButton.click();
 
-    // Find the "IncomingEmails" element by it's id="PH_user-email":
+    // Find the "IncomingEmails" element by it's xpath:
     // To avoid stale element reference error, we need to wait until element is loaded first:
     Util.waitElementUntilPresent(By.xpath("//*[@id=\"b-nav_folders\"]/div/div[1]/a/span[2]"), driver);
     WebElement incomingEmails = driver.findElement(By.xpath("//*[@id=\"b-nav_folders\"]/div/div[1]/a/span[2]"));
@@ -86,7 +86,7 @@ public class MailRu {
     // Compare expected and actual results:
     assertEquals("Входящие", displayText);
 
-    // Find the "SentEmails" element by it's id="PH_user-email":
+    // Find the "SentEmails" element by it's xpath:
     // To avoid stale element reference error, we need to wait until element is loaded first:
     Util.waitElementUntilPresent(By.xpath("//*[@id=\"b-nav_folders\"]/div/div[2]/a/span"), driver);
     WebElement sentEmails = driver.findElement(By.xpath("//*[@id=\"b-nav_folders\"]/div/div[2]/a/span"));
@@ -95,7 +95,7 @@ public class MailRu {
     // Compare expected and actual results:
     assertEquals("Отправленные", displayText);
 
-   // Find the "WriteEmails" element by it's id="PH_user-email":
+   // Find the "WriteEmails" element by it's xpath:
     // To avoid stale element reference error, we need to wait until element is loaded first:
     Util.waitElementUntilPresent(By.xpath("//*[@id=\"b-toolbar__left\"]/div/div/div[2]/div/a/span"), driver);
     WebElement writeEmails = driver.findElement(By.xpath("//*[@id=\"b-toolbar__left\"]/div/div/div[2]/div/a/span"));
@@ -106,6 +106,19 @@ public class MailRu {
 
     // Click the "enterButton":
     writeEmails.click();
+
+    // Find the "WriteEmails" element by it's xpath:
+    // To avoid stale element reference error, we need to wait until element is loaded first:
+    Util.waitElementUntilPresent(By.xpath("//*[@id=\"b-toolbar__left\"]/div/div/div[2]/div/a/span"), driver);
+    writeEmails = driver.findElement(By.xpath("//*[@id=\"b-toolbar__left\"]/div/div/div[2]/div/a/span"));
+    displayText = writeEmails.getText();
+
+       // Compare expected and actual results:
+    assertEquals("Написать письмо", displayText);
+
+    // Click the "enterButton":
+    writeEmails.click();
+
 
   }
 
